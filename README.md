@@ -10,8 +10,8 @@ None
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `emacs_package` | | `{{ __emacs_package }}` |
-| `emacs_extra_packages` | | `[]` |
+| `emacs_package` | package name of `emcas` | `{{ __emacs_package }}` |
+| `emacs_extra_packages` | list of extra packages to install | `[]` |
 
 
 ## Debian
