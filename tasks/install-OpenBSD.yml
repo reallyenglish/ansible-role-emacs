@@ -1,12 +1,12 @@
 ---
 
 - name: Install emacs
-  pkgng:
+  openbsd_pkg:
     name: "{{ emacs_package }}"
     state: present
 
 - name: Install extra emacs packages
-  pkgng:
+  openbsd_pkg:
     name: "{{ item }}"
     state: present
   with_items: "{{ emacs_extra_packages }}"

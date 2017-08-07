@@ -1,2 +1,1 @@
-__emacs_db_dir: /var/db/emacs
-__emacs_conf_dir: /usr/local/etc/emacs
+__emacs_package: emacs-nox11

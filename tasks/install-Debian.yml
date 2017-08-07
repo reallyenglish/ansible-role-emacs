@@ -1,12 +1,12 @@
 ---
 
 - name: Install emacs
-  pkgng:
+  apt:
     name: "{{ emacs_package }}"
     state: present
 
 - name: Install extra emacs packages
-  pkgng:
+  apt:
     name: "{{ item }}"
     state: present
   with_items: "{{ emacs_extra_packages }}"

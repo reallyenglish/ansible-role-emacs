@@ -2,4 +2,4 @@
   roles:
     - ansible-role-emacs
   vars:
-    emacs_config: ""
+    emacs_extra_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'emacs-lisp-intro' ]{% elif ansible_os_family == 'Debian' %}[ 'emacs-goodies-el' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'emacs-el' ]{% elif ansible_os_family == 'RedHat' %}[ 'emacs-git-el' ]{% endif %}"
