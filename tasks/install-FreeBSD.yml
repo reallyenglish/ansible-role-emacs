@@ -1,0 +1,6 @@
+---
+
+- name: Install emacs
+  pkgng:
+    name: emacs
+    state: present

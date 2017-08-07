@@ -1,0 +1,6 @@
+---
+
+- name: Restart emacs
+  service:
+    name: emacs
+    state: restarted

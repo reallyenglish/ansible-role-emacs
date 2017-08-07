@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-role-emacs
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+
+- name: Create log directory
+  file:
+    path: "{{ emacs_log_dir }}"
+    mode: 0755
+    owner: "{{ emacs_user }}"
+    group: "{{ emacs_group }}"
+    state: directory
+  notify: Restart emacs
+
+- name: Create db directory
+  file:
+    path: "{{ emacs_db_dir }}"
+    mode: 0755
+    owner: "{{ emacs_user }}"
+    group: "{{ emacs_group }}"
+    state: directory
+  notify: Restart emacs
+
+- name: Create emacs.conf
+  template:
+    src: emacs.conf.j2
+    dest: "{{ emacs_conf_file }}"
+    validate: echo %s
+  notify: Restart emacs
+
+- name: Start emacs
+  service:
+    name: "{{ emacs_service }}"
+    enabled: true
+    state: started
