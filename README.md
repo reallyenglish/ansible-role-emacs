@@ -1,6 +1,6 @@
 # ansible-role-emacs
 
-A brief description of the role goes here.
+Install `emacs` and related packages.
 
 # Requirements
 
@@ -8,9 +8,35 @@ None
 
 # Role Variables
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| `emacs_package` | | `{{ __emacs_package }}` |
+| `emacs_extra_packages` | | `[]` |
 
+
+## Debian
+
+| Variable | Default |
+|----------|---------|
+| `__emacs_package` | `emacs24-nox` |
+
+## FreeBSD
+
+| Variable | Default |
+|----------|---------|
+| `__emacs_package` | `emacs-nox11` |
+
+## OpenBSD
+
+| Variable | Default |
+|----------|---------|
+| `__emacs_package` | `emacs--` |
+
+## RedHat
+
+| Variable | Default |
+|----------|---------|
+| `__emacs_package` | `emacs-nox` |
 
 # Dependencies
 
@@ -19,6 +45,11 @@ None
 # Example Playbook
 
 ```yaml
+- hosts: localhost
+  roles:
+    - ansible-role-emacs
+  vars:
+    emacs_extra_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'emacs-lisp-intro' ]{% elif ansible_os_family == 'Debian' %}[ 'emacs-goodies-el' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'emacs-el' ]{% elif ansible_os_family == 'RedHat' %}[ 'emacs-git-el' ]{% endif %}"
 ```
 
 # License

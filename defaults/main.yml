@@ -1,8 +1,2 @@
-emacs_user: emacs
-emacs_group: emacs
-emacs_log_dir: /var/log/emacs
-emacs_db_dir: "{{ __emacs_db_dir }}"
-emacs_service: emacs
-emacs_conf_dir: "{{ __emacs_conf_dir }}"
-emacs_conf_file: "{{ __emacs_conf_dir }}/emacs.conf"
-emacs_flags: ""
+emacs_package: "{{ __emacs_package }}"
+emacs_extra_packages: []
